@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kwokwing</title>
+
+<style>
+:root{
+  --kw-primary-background:#fff;
+  --divider-color:#d2d2d2;
+  --icon-hover-bg:rgba(0,0,0,.05);
+  --active-indicator:#000;
+}
+
+/* 恢复原来完整的侧边栏样式 */
+.kw-navbar-left{
+  position: fixed; /* 固定定位 */
+  top: 0; left: 0; /* 左上角 */
+  height: 100vh; /* 视口高度 */
+  width: 15.3rem; /* 固定宽度 */
+  background: var(--kw-primary-background); /* 白色背景 */
+  border-right: 1px solid var(--divider-color); /* 右边分割线 */
+  display: flex; /* Flex布局 */
+  flex-direction: column; /* 纵向排列 */
+  align-items: flex-start; /* 左对齐 */
+  padding: 1.5rem 0; /* 上下内边距1.5rem，左右无 */
+  box-sizing: border-box; /* 盒模型包含padding和border */
+  z-index: 1000; /* 堆叠顺序 */
+}
+
+/* 侧边栏Logo样式 */
+.kw-logo{
+  font: 600 1.5rem/1 "Segoe UI", sans-serif;
+  color: #000;
+  text-decoration: none;
+  padding: 0 1rem 1.25rem 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+/* 侧边栏链接列表 */
+.kw-links{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0.1rem;
+  width: 85%;
+}
+
+/* 单个链接按钮 */
+.kw-links a{
+  width: calc(100% - 1rem);
+  margin: 0 0 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: .75rem .75rem;
+  border-radius: 8px;
+  font-size: 1.06rem;
+  color: #000;
+  text-decoration: none;
+  transition: background-color .2s ease, transform .2s cubic-bezier(.4,0,.2,1);
+  position: relative;
+}
+
+.kw-links a:hover{
+  background: var(--icon-hover-bg);
+}
+
+.kw-links a.active::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 24px;
+  border-radius: 1px;
+  background: var(--active-indicator);
+}
+
+/* 内容栏容器，保持不变 */
+.articles-wrapper {
+  position: relative;
+  top: 2.5rem;
+  left: 25.1rem; /* 留出侧边栏宽度和边距 */
+  height: auto;
+  width: 60rem;
+  background: var(--kw-primary-background);
+  border: 0px solid var(--divider-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* 文章容器样式保持不变 */
+article.overflow-hidden {
+  width: 100%;
+  padding: 16px 24px;
+  margin: 0 0 24px 0;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: auto;
+}
+
+article .content-wrapper {
+    position: relative;
+    max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  height:auto;
+}
+
+
+
+.flex--item6 {
+  flex: 6 1 0%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+</style>
+</head>
+
+<body>
+  <!-- 侧边导航栏 -->
+  <nav class="kw-navbar-left">
+    <a href="#" class="kw-logo">Kwokwing</a>
+    <div class="kw-links">
+      <a href="#" title="主页">首页</a>
+      <a href="#" title="搜索">搜索</a>
+      <a href="#" title="新建">探索</a>
+      <a href="#" title="动态">动态</a>
+      <a href="#" title="个人资料">个人资料</a>
+    </div>
+  </nav>
+
+  <!-- 内容容器 -->
+  <div class="articles-wrapper">
+    <!-- 第一个文章栏 -->
+    <article class="overflow-hidden" itemscope itemtype="https://schema.org/Article">
+      <div class="content-wrapper">
+        <div class="flex--item6">
+          <a href="https://www.instagram.com/" style="text-decoration:none; color:#000;">
+            <h1 class="fs-headline1 p-ff-roboto-slab-bold lh-sm wmx7 mb0" itemprop="name" style="margin-top:0; margin-bottom:0;">
+              How self-supervised learning revolutionized natural language processing and gen AI
+            </h1>
+          </a>
+          <p class="fc-black-500 fs-body2 mb0 mt16 v-truncate5" itemprop="abstract" style="margin-top:16px; color:#555;">
+            Self-supervised learning is a key advancement that revolutionized natural language processing and generative AI. Here’s how it works and two examples of how it is used to train language models.
+          </p>
+        </div>
+        <a href="#" class="flex--item6 d-flex lg:mb24" style="min-width:300px; align-items:flex-start;">
+          <img src="https://cdn.stackoverflow.co/images/jo7n4k8s/production/c86e442c47972984ddb7781488ad94ee1f0c4c04-12000x6293.jpg?rect=10,0,11980,6293&amp;w=415&amp;h=218&amp;auto=format&amp;dpr=2" class="bar-md w100 h-auto d-block as-start ba bc-black-150" alt="Article image" style="border-radius:4px; width:100%; height:auto; display:block; border:1px solid #ddd; align-self:flex-start;">
+        </a>
+      </div>
+    </article>
+
+    <!-- 第二个文章栏 -->
+    <article class="overflow-hidden" itemscope itemtype="https://schema.org/Article">
+      <div class="content-wrapper">
+        <div class="flex--item6">
+          <a href="#" style="text-decoration:none; color:#000;">
+            <h1 class="fs-headline1 p-ff-roboto-slab-bold lh-sm wmx7 mb0" itemprop="name" style="margin-top:0; margin-bottom:0;">
+              Exploring the Future of AI: Trends and Predictions
+            </h1>
+          </a>
+          <p class="fc-black-500 fs-body2 mb0 mt16 v-truncate5" itemprop="abstract" style="margin-top:16px; color:#555;">
+            Artificial intelligence continues to evolve rapidly, impacting various industries. This article explores upcoming trends and predictions shaping the future of AI technology.
+          </p>
+        </div>
+        <a href="#" class="flex--item6 d-flex lg:mb24" style="min-width:300px; align-items:flex-start;">
+          <img src="C:\Users\AlanKwok\Desktop\微信图片_20250601012204.jpg" alt="AI Future Image" style="border-radius:4px; width:100%; height:auto; display:block; border:1px solid #ddd; align-self:flex-start;">
+        </a>
+      </div>
+    </article>
+    <article class="overflow-hidden" itemscope itemtype="https://schema.org/Article">
+      <div class="content-wrapper">
+        <div class="flex--item6">
+          <a href="https://www.instagram.com/" style="text-decoration:none; color:#000;">
+            <h1 class="fs-headline1 p-ff-roboto-slab-bold lh-sm wmx7 mb0" itemprop="name" style="margin-top:0; margin-bottom:0;">
+              天地不仁 以万物为刍狗 圣人不仁 以百姓为刍狗
+            </h1>
+          </a>
+          <p class="fc-black-500 fs-body2 mb0 mt16 v-truncate5" itemprop="abstract" style="margin-top:16px; color:#555;">
+            Self-supervised learning is a key advancement that revolutionized natural language processing and generative AI. Here’s how it works and two examples of how it is used to train language models.
+          </p>
+        </div>
+        <a href="#" class="flex--item6 d-flex lg:mb24" style="min-width:300px; align-items:flex-start;">
+          <img src="https://cdn.stackoverflow.co/images/jo7n4k8s/production/c86e442c47972984ddb7781488ad94ee1f0c4c04-12000x6293.jpg?rect=10,0,11980,6293&amp;w=415&amp;h=218&amp;auto=format&amp;dpr=2" class="bar-md w100 h-auto d-block as-start ba bc-black-150" alt="Article image" style="border-radius:4px; width:100%; height:auto; display:block; border:1px solid #ddd; align-self:flex-start;">
+        </a>
+      </div>
+    </article>
+
+    <!-- 第二个文章栏 -->
+    <article class="overflow-hidden" itemscope itemtype="https://schema.org/Article">
+      <div class="content-wrapper">
+        <div class="flex--item6">
+          <a href="#" style="text-decoration:none; color:#000;">
+            <h1 class="fs-headline1 p-ff-roboto-slab-bold lh-sm wmx7 mb0" itemprop="name" style="margin-top:0; margin-bottom:0;">
+              Exploring the Future of AI: Trends and Predictions
+            </h1>
+          </a>
+          <p class="fc-black-500 fs-body2 mb0 mt16 v-truncate5" itemprop="abstract" style="margin-top:16px; color:#555;">
+            Artificial intelligence continues to evolve rapidly, impacting various industries. This article explores upcoming trends and predictions shaping the future of AI technology.
+          </p>
+        </div>
+        <a href="#" class="flex--item6 d-flex lg:mb24" style="min-width:300px; align-items:flex-start;">
+          <img src="https://cdn.example.com/images/ai-future.jpg" class="bar-md w100 h-auto d-block as-start ba bc-black-150" alt="AI Future Image" style="border-radius:4px; width:100%; height:auto; display:block; border:1px solid #ddd; align-self:flex-start;">
+        </a>
+      </div>
+    </article> 
+  </div>
+</body>
+</html>
